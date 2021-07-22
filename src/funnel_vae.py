@@ -20,7 +20,7 @@ from funnel_vae.src.config import FunnelVaeConfig
 logger = logging.get_logger(__name__)
 
 
-class FunnelVaeModel(PreTrainedModel):
+class FunnelVae(PreTrainedModel):
     r"""
     The Funnel-VAE model was proposed in `Transformers as Variational Autoencoders
     <https://fraser-greenlee.github.io/2020/08/13/Transformers-as-Variational-Autoencoders.html>`__ by Fraser Greenlee.
