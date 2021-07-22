@@ -1,2 +1,4 @@
-pytorch
+wheel
+torch
 transformers
+sentence-transformers

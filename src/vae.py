@@ -21,9 +21,9 @@ class VAE(nn.Module):
         self.decoder = decoder
         self.use_reg_loss = use_reg_loss
 
-    def _model_forward(self, encoding, latent=None):
+    def _model_forward(self, encoding, latent=None, attention_mask=None):
         if latent is None:
-            latent = self.encoder(encoding)
+            latent = self.encoder(encoding, attention_mask=attention_mask)
         return self.decoder(latent), latent
 
     def forward(
@@ -31,11 +31,12 @@ class VAE(nn.Module):
         input_encoding=None,
         latent=None,
         skip_reg_loss=False,
+        attention_mask=None,
     ):
         if input_encoding is None and latent is None:
             raise ValueError("Both `input_encoding` and `latent` sent to VAE are None.")
         use_reg_loss = self.use_reg_loss and latent is None and skip_reg_loss is False  # don't regularise if given latent
-        recon_encoding, latent = self._model_forward(input_encoding, latent=latent)
+        recon_encoding, latent = self._model_forward(input_encoding, latent=latent, attention_mask=attention_mask)
         if use_reg_loss:
             # treat each token encoding as a seperate latent code
             batch_size, n_latents_per_batch, latent_code_dim = latent.size()

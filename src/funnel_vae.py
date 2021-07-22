@@ -250,7 +250,9 @@ class FunnelVaeModel(PreTrainedModel):
             )
 
         vae_outputs = self.vae(
-            input_encoding=encoder_outputs.last_hidden_state if encoder_outputs and isinstance(encoder_outputs, BaseModelOutput) else None, latent=latent
+            input_encoding=encoder_outputs.last_hidden_state if encoder_outputs and isinstance(encoder_outputs, BaseModelOutput) else None,
+            latent=latent,
+            attention_mask=encoder_outputs.attention_mask
         )
 
         if self.config.skip_upsample:
