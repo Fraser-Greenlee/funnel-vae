@@ -107,7 +107,6 @@ class FunnelVaeConfig(PretrainedConfig):
             assertEqual(self.t5.model_type, "t5", "Need t5 model type for transformer_decoder.")
         else:
             self.t5 = T5Config(**kwargs.pop('t5'))
-        assertEqual(self.funnel.d_model, self.t5.d_model, "Funnel & T5 transformers have different dimensions.")
         self.decoder_grad_chk_pnt_rate = decoder_grad_chk_pnt_rate
 
         # extra training losses

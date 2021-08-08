@@ -11,7 +11,7 @@ class LatentEncoderNTokens(nn.Module):
     '''
     def __init__(self, config):
         super().__init__()
-        self.token_to_latent = nn.Linear(config.t5.d_model, config.latent_size)
+        self.token_to_latent = nn.Linear(config.funnel.d_model, config.latent_size)
         self.n_tokens = config.n_latent_tokens
         self.tanh = nn.Tanh()
 
