@@ -75,6 +75,7 @@ class FunnelVae(PreTrainedModel):
         self.lm_head = t5_transformer.lm_head
         self.shared_embedding = t5_transformer.shared
         self.decoder_start_token_id = self.config.t5.decoder_start_token_id
+
         assert (
             self.decoder_start_token_id is not None
         ), "`self.config.t5.decoder_start_token_id` has to be defined. In T5 it is usually set to the pad_token_id. See T5 docs for more information"
