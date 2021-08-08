@@ -2,7 +2,7 @@ from transformers.utils import logging
 import torch
 from torch import nn
 
-from transformer_vae.model_outputs import BaseVaeOutput
+from funnel_vae.src.outputs import BaseVaeOutput
 
 logger = logging.get_logger()
 

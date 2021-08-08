@@ -1,5 +1,8 @@
+import logging
 import torch
 from torch import nn
+
+logger = logging.get_logger()
 
 
 class LatentDecoderNTokens(nn.Module):
@@ -29,6 +32,7 @@ class LatentDecoderLayerNorm(LatentDecoderNTokens):
 
     def forward(self, latent) -> torch.Tensor:
         return self.norm(super().forward(latent))
+
 
 VAE_DECODER_MODELS = {
     "": LatentDecoderLayerNorm,

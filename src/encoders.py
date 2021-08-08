@@ -46,7 +46,6 @@ class LatentEncoderMeanPoolTokens(nn.Module):
         return self.tanh(self.token_to_latent(self.mean_pooling(token_embeddings, attention_mask)))
 
 
-
 VAE_ENCODER_MODELS = {
-    "": LatentEncoderNTokens,
+    "": LatentEncoderMeanPoolTokens,
 }
